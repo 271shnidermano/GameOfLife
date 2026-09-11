@@ -66,8 +66,33 @@ public class GameOfLife {
         // TODO: Traverse the 3 x 3 neighborhood around row, col.
         //       Skip row, col itself.
         //       Check bounds before reading society[r][c].
+        int count = 0;
+        if(row>=0 && row<society.length && col>=0 && col<society[0].length) {
+           if(row>=1&& col>=1) 
+            {
+              for(int i =row-1; i<row+1; i++) 
+              {
+                for(int j = col-1; j<col+1; j++) 
+                {
+                    if(i!=row&&j!=col)
+                    {
+                        if(society[i][j]) 
+                        {
+                            count++;
+                        }
+                    }
+                }
+              }
+           }
+           else
+            {
+               throw new IllegalArgumentException("Row and column must be greater than 0.");  
+            }
+        }
+        
 
-        return 0;
+
+        return count;
     }
 
     /**
