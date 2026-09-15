@@ -113,18 +113,28 @@ public class GameOfLife {
         // same old generation.
         boolean[][] nextGeneration = new boolean[society.length][society[0].length];
 
-        for (int row = 0; row < society.length; row++) {
-            for (int col = 0; col < society[0].length; col++) {
-                int liveNeighbors = neighborCount(row, col);
+       for (int row = 0; row < society.length; row++) {
+    for (int col = 0; col < society[0].length; col++) {
+        int liveNeighbors = neighborCount(row, col);
 
-                if (society[row][col]) {
-                    nextGeneration[row][col] = liveNeighbors == 2 || liveNeighbors == 3;
-                }
-                else {
-                    nextGeneration[row][col] = liveNeighbors == 3;
-                }
+        if (society[row][col]) {
+            if (liveNeighbors == 2 || liveNeighbors == 3) {
+                nextGeneration[row][col] = true;
+            }
+            else {
+                nextGeneration[row][col] = false;
             }
         }
+        else {
+            if (liveNeighbors == 3) {
+                nextGeneration[row][col] = true;
+            }
+            else {
+                nextGeneration[row][col] = false;
+            }
+        }
+    }
+}
 
         society = nextGeneration;
     }
